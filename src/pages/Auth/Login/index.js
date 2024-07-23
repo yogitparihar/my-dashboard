@@ -1,39 +1,37 @@
+import React, { useContext, useState } from "react";
 import {
   Box,
   Button,
   Container,
   Grid,
+  IconButton,
   Link,
   TextField,
   Typography,
+  useTheme,
 } from "@mui/material";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import React from "react";
+import './login.scss';
+import { Brightness4, Brightness7 } from "@mui/icons-material";
 
 export const Login = () => {
-  const defaultTheme = createTheme();
+  const [mode, setMode] = useState('light');
+  const theme = useTheme();
+  const handleTheme = () =>{
+
+  }
   return (
-    <ThemeProvider theme={defaultTheme}>
       <Container
         component="main"
         maxWidth="xs"
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          height: "100vh",
-        }}
+        className="login-page-wrapper"
       >
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <Typography component="h1" variant="h5">
+        <Grid container>
+          <IconButton onClick={handleTheme}>
+            <Brightness4/>
+          </IconButton>
+        </Grid>
+        <Box>
+          <Typography component="h1" variant="h5" className="text-align-center">
             Sign in
           </Typography>
           <Box component="form" noValidate sx={{ mt: 1 }}>
@@ -74,6 +72,5 @@ export const Login = () => {
           </Box>
         </Box>
       </Container>
-    </ThemeProvider>
   );
 };
